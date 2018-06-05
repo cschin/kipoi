@@ -549,6 +549,8 @@ def predict_snvs(model,
 
     res = []
 
+    dataloader_args["use_linecache"]=True
+
     it = dataloader(**dataloader_args).batch_iter(batch_size=batch_size,
                                                   num_workers=num_workers)
 
@@ -687,7 +689,7 @@ def score_variants(model,
       input_vcf: input vcf file path
       output_vcf: output vcf file path
       scores: list of score names to compute. See kipoi.postprocessing.variant_effects.scores
-      score_kwargs: optional, list of kwargs that corresponds to the entries in score. For details see 
+      score_kwargs: optional, list of kwargs that corresponds to the entries in score. For details see
       num_workers: number of paralell workers to use for dataloading
       batch_size: batch_size for dataloading
       source: model source name
